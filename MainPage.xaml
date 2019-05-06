@@ -10,6 +10,11 @@
 
     <Grid>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="Narrow">
@@ -17,8 +22,10 @@
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="mainPanel.Orientation"
-                                Value="Vertical" />
+                        <Setter Target="mainSplitView.DisplayMode"
+                                Value="Overlay" />
+                        <Setter Target="mainSplitView.IsPaneOpen"
+                                Value="False" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Compact">
@@ -26,39 +33,76 @@
                         <AdaptiveTrigger MinWindowWidth="720" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="mainPanel.Orientation"
-                                Value="Horizontal" />
+                        <Setter Target="mainSplitView.DisplayMode"
+                                Value="CompactOverlay" />
+                        <Setter Target="mainSplitView.IsPaneOpen"
+                                Value="False" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Wide">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="1920" />
+                        <AdaptiveTrigger MinWindowWidth="1920"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="mainPanel.Orientation"
-                                Value="Horizontal" />
+                        <Setter Target="mainSplitView.DisplayMode"
+                                Value="CompactInline" />
+                        <Setter Target="mainSplitView.IsPaneOpen"
+                                Value="True" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <Grid Margin="40">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition />
-            </Grid.RowDefinitions>
+        <Border RequestedTheme="Dark" Height="60" VerticalAlignment="Top" Background="#FF262352">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
 
-            <StackPanel x:Name="mainPanel" HorizontalAlignment="Center" Margin="40">
-                <Button Click="OnGoPage1Click" Content="Go to Page 1" x:Name="oneButton" />
-                <Button Click="OnGoPage2Click" Content="Go to Page 2" x:Name="twoButton" />
-                <Button Click="OnGoPage3Click" Content="Go to Page 3" x:Name="threeButton" />
-                <Button Click="OnGoBackClick" Content="Go Back" x:Name="backButton" />
-                <Button Click="OnGoForwardClick" Content="Go Forward" x:Name="forwardButton" />
-            </StackPanel>
-            <Frame x:Name="mainFrame" Grid.Row="1">
-                
-            </Frame>
-        </Grid>
-        
+                <StackPanel Orientation="Horizontal">
+
+                    <Button Click="OpenSplitViewClick" Background="Transparent" BorderThickness="0" Width="48" Height="48" VerticalAlignment="Center" Foreground="White"  >
+                        <Button.Content>
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="" />
+                        </Button.Content>
+                    </Button>
+
+                </StackPanel>
+
+            </Grid>
+
+        </Border>
+
+        <SplitView Grid.Row="1" RequestedTheme="Dark" x:Name="mainSplitView" PaneBackground="#FF262352" OpenPaneLength="200" CompactPaneLength="48">
+            <SplitView.Pane>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel RequestedTheme="Dark" Margin="0,12,0,0" Grid.Row="1" VerticalAlignment="Stretch">
+                        <HyperlinkButton Click="OnGoPage1Click" Margin="10,5" Foreground="White" Content="1"/>
+                        <HyperlinkButton Click="OnGoPage2Click" Margin="10,5" Foreground="White" Content="2"/>
+                        <HyperlinkButton Click="OnGoPage3Click" Margin="10,5" Foreground="White" Content="3"/>
+                        <HyperlinkButton x:Name="forwardButton" Click="OnGoForwardClick" Margin="10,5" Foreground="White" Content=">"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="3" Margin="4" >
+                        <Button Click="OnGoBackClick" x:Name="backButton" FontSize="24" Background="{x:Null}"  Content="&#xE0A6;" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </Grid>
+            </SplitView.Pane>
+            <SplitView.Content>
+
+                <Frame x:Name="mainFrame"  />
+
+            </SplitView.Content>
+        </SplitView>
+
     </Grid>
 </Page>

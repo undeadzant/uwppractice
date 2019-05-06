@@ -28,7 +28,10 @@ namespace tagur
             // adding in parts from tutorial here
             this.Loaded += MainPage_Loaded;
             this.mainFrame.Navigated += MainFrame_Navigated;
+
         }
+
+       
 
         private void MainFrame_Navigated(object sender, NavigationEventArgs e)
         {
@@ -64,6 +67,11 @@ namespace tagur
         private void OnGoPage3Click(object sender, RoutedEventArgs e)
         {
             mainFrame.Navigate(typeof(Pages.Page3));
+        }
+
+        private void OpenSplitViewClick(object sender, RoutedEventArgs e)
+        {
+            this.mainSplitView.IsPaneOpen = !this.mainSplitView.IsPaneOpen;
         }
     }
 }
