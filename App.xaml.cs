@@ -46,6 +46,7 @@ namespace tagur
             if (rootFrame == null)
             {
                 // Create a Frame to act as the navigation context and navigate to the first page
+                // this is the grandparent frame - zant
                 rootFrame = new Frame();
 
                 rootFrame.NavigationFailed += OnNavigationFailed;

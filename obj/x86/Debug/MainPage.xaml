@@ -8,22 +8,17 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <RelativePanel Padding="40">
+    <Grid>
+
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:ConnectionId='2' x:Name="Narrow">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowHeight="0"/>
+                        <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="image.(RelativePanel.Below)"
-                                Value="label" />
-                        <Setter Target="label.Visibility"
-                                Value="Collapsed" />
-                        <Setter Target="textblock.(RelativePanel.Below)"
-                                Value="image" />
-                        <Setter Target="textblock.FontSize"
-                                Value="22" />
+                        <Setter Target="mainPanel.Orientation"
+                                Value="Vertical" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:ConnectionId='3' x:Name="Compact">
@@ -31,12 +26,8 @@
                         <AdaptiveTrigger MinWindowWidth="720" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="image.(RelativePanel.Below)"
-                                Value="label" />
-                        <Setter Target="textblock.(RelativePanel.Below)"
-                                Value="image" />
-                        <Setter Target="textblock.FontSize"
-                                Value="32" />
+                        <Setter Target="mainPanel.Orientation"
+                                Value="Horizontal" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:ConnectionId='4' x:Name="Wide">
@@ -44,21 +35,31 @@
                         <AdaptiveTrigger MinWindowWidth="1920" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="image.(RelativePanel.Below)"
-                                Value="label" />
-                        <Setter Target="textblock.(RelativePanel.RightOf)"
-                                Value="image" />
-                        <Setter Target="textblock.FontSize"
-                                Value="42" />
+                        <Setter Target="mainPanel.Orientation"
+                                Value="Horizontal" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+
+        <Grid Margin="40">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <StackPanel x:ConnectionId='5' x:Name="mainPanel" HorizontalAlignment="Center" Margin="40">
+                <Button x:ConnectionId='7'                        Content="Go to Page 1" x:Name="oneButton" />
+                <Button x:ConnectionId='8'                        Content="Go to Page 2" x:Name="twoButton" />
+                <Button x:ConnectionId='9'                        Content="Go to Page 3" x:Name="threeButton" />
+                <Button x:ConnectionId='10'                       Content="Go Back" x:Name="backButton" />
+                <Button x:ConnectionId='11'                          Content="Go Forward" x:Name="forwardButton" />
+            </StackPanel>
+            <Frame x:ConnectionId='6' x:Name="mainFrame" Grid.Row="1">
+                
+            </Frame>
+        </Grid>
         
-        
-        <TextBlock x:ConnectionId='5' x:Name="label" Text="Here is an image:"/>
-        <Image x:ConnectionId='6' x:Name="image" Width="300" Stretch="Uniform" Source="Images/bbblogo.jpg" />
-        <TextBlock x:ConnectionId='7' x:Name="textblock" Margin="20,40" FontSize="32" Text="My Logo"/>
-    </RelativePanel>
+    </Grid>
 </Page>
 

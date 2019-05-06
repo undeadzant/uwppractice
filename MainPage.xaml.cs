@@ -25,6 +25,45 @@ namespace tagur
         public MainPage()
         {
             this.InitializeComponent();
+            // adding in parts from tutorial here
+            this.Loaded += MainPage_Loaded;
+            this.mainFrame.Navigated += MainFrame_Navigated;
+        }
+
+        private void MainFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+            backButton.IsEnabled = mainFrame.CanGoBack;
+            forwardButton.IsEnabled = mainFrame.CanGoForward;
+        }
+
+        private void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(typeof(Pages.Page1));
+        }
+
+        private void OnGoBackClick(object sender, RoutedEventArgs e)
+        {
+            if (mainFrame.CanGoBack) mainFrame.GoBack();
+        }
+
+        private void OnGoForwardClick(object sender, RoutedEventArgs e)
+        {
+            if (mainFrame.CanGoForward) mainFrame.GoForward();
+        }
+
+        private void OnGoPage1Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(typeof(Pages.Page1));
+        }
+
+        private void OnGoPage2Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(typeof(Pages.Page2));
+        }
+
+        private void OnGoPage3Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(typeof(Pages.Page3));
         }
     }
 }

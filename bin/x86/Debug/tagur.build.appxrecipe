@@ -415,6 +415,15 @@
     <AppxPackagedFile Include="C:\Users\mjall\source\repos\tagur\tagur\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mjall\source\repos\tagur\tagur\bin\x86\Debug\Pages\Page1.xbf">
+      <PackagePath>Pages\Page1.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mjall\source\repos\tagur\tagur\bin\x86\Debug\Pages\Page2.xbf">
+      <PackagePath>Pages\Page2.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mjall\source\repos\tagur\tagur\bin\x86\Debug\Pages\Page3.xbf">
+      <PackagePath>Pages\Page3.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17763.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
     </AppxPackagedFile>
